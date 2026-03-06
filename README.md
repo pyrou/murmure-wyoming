@@ -6,6 +6,8 @@ Learn more on the [official website](https://murmure.al1x-ai.com/).
 
 This repository is a bridge for the Wyoming protocol allowing murmure to be used directly in HomeAssistant
 
+<img width="577" height="548" alt="Capture d’écran 2026-03-07 à 00 51 29" src="https://github.com/user-attachments/assets/1646c49f-538a-4545-9077-968d4b11347e" />
+
 ## Quickstart
 
 1. Download and install murmure
