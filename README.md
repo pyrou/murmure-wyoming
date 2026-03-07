@@ -20,7 +20,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-python bridge.py \
+python -m murmure_wyoming \
   --host 0.0.0.0 \
   --port 10300 \
   --murmure-url http://127.0.0.1:4800/api/transcribe \
@@ -28,3 +28,18 @@ python bridge.py \
   --language fr \
   --log-level DEBUG
 ```
+
+## Architecture
+
+The project is now split into focused modules under `murmure_wyoming/`:
+
+- `app.py`: bootstrap and lifecycle management.
+- `cli.py`: CLI parsing, runtime config creation, and logging setup.
+- `config.py`: immutable bridge configuration (`BridgeConfig`).
+- `murmure_wyoming/bridge.py`: Wyoming event loop and session orchestration.
+- `session.py`: per-client transcription/session state.
+- `audio.py`: PCM to temporary WAV conversion utility.
+- `murmure_client.py`: HTTP client dedicated to Murmure communication.
+- `wyoming_info.py`: Wyoming `describe` info event construction.
+
+This layout keeps network protocol handling, HTTP integration, and runtime setup isolated, making future changes (streaming support, retries, multi-backend routing) easier to add.
